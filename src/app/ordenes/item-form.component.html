@@ -1,0 +1,46 @@
+<div class="card bg-dark text-white">
+    <div class="card-header">{{ titulo }}</div>
+    <div class="card-body">
+  
+      <form>
+        <div class="form-group row">
+          <label for="name" class="col-form-label col-sm-2">Nombre</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" [(ngModel)]="item.name" name="name">
+          </div>
+        </div>
+  
+        <div class="form-group row">
+          <label for="description" class="col-form-label col-sm-2">Descripcion</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" [(ngModel)]="item.description" name="description">
+          </div>
+        </div>
+  
+        <div class="form-group row">
+          <label for="price" class="col-form-label col-sm-2">precio</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" [(ngModel)]="item.price" name="price">
+          </div>
+        </div>
+  
+        <div class="form-group row">
+          <label for="image" class="col-form-label col-sm-2">Imagen</label>
+          <div class="col-sm-6">
+            <input type="text" class="form-control" [(ngModel)]="item.image" name="image">
+          </div>
+        </div>
+  
+        <div class="form-group row">
+          <div class="col-sm-6">
+            <button class="btn btn-primary" role="button" (click)='create()' *ngIf="!item.itemId else elseBlock">Crear</button>
+  
+            <ng-template #elseBlock>
+              <button class="btn btn-primary" role="button" (click)='update()'>Editar</button>
+            </ng-template>
+          </div>
+        </div>
+      </form>
+  
+    </div>
+  </div>

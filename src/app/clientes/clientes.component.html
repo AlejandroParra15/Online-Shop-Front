@@ -1,3 +1,5 @@
+<detalle-cliente *ngIf="clienteSeleccionado" [cliente] ="clienteSeleccionado"></detalle-cliente>
+
 <div class="card border-primary mb-3">
   <div class="card-header">Clientes</div>
   <div class="card-body text-primary">
@@ -5,10 +7,11 @@
     <table class="table table-bordered table-striped">
       <thead>
         <tr>
+          <th>detalle</th>
           <th>id</th>
-          <th>email</th>
-          <th>address</th>
-          <th>phoneNumber</th>
+          <th>correo</th>
+          <th>dirección</th>
+          <th>número</th>
 
           <th>
             editar
@@ -18,6 +21,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let cliente of clientes">
+          <td><button type="button" (click)="abrirModal(cliente)" class="btn btn-success btn-sm">ver</button></td>
           <td>{{ cliente.id }}</td>
           <td>{{ cliente.email }}</td>
           <td>{{ cliente.address }}</td>

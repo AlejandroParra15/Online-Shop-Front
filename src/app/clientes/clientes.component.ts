@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Cliente } from './cliente';
 import { ClienteService } from './cliente.service';
+import { ModalService } from './detalle/modal.service';
+import { AuthService } from '../usuarios/auth.service';
 import swal from 'sweetalert2'
 
 @Component({
@@ -10,8 +12,11 @@ import swal from 'sweetalert2'
 export class ClientesComponent implements OnInit {
 
   clientes: Cliente[];
+  clienteSeleccionado: Cliente;
 
-  constructor(private clienteService: ClienteService) { }
+  constructor(private clienteService: ClienteService,
+    private modalService: ModalService, 
+    public authService : AuthService) { }
 
   ngOnInit() {
     this.clienteService.getClientes().subscribe(
@@ -49,6 +54,11 @@ export class ClientesComponent implements OnInit {
 
       }
     })
+  }
+
+  abrirModal(cliente: Cliente) {
+    this.clienteSeleccionado = cliente;
+    this.modalService.abrirModal();
   }
 
 }
